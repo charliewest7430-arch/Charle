@@ -12,6 +12,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Gracefully prevent unhandled promise rejections from Vite WebSocket disconnects in iframe/preview environments
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event.reason && (
+          event.reason.message === 'WebSocket closed without opened.' ||
+          (typeof event.reason === 'string' && event.reason.includes('WebSocket')) ||
+          (event.reason.stack && event.reason.stack.includes('@vite/client'))
+        )) {
+          event.preventDefault();
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
