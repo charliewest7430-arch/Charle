@@ -1,0 +1,158 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated user basic profile and account info",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "format": "email", "maxLength": 150 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "FreelancerProfile": {
+      "title": "FreelancerProfile",
+      "description": "User freelancer skills, category, preferences for AI job matching",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "skills": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 100 },
+        "experienceLevel": { "type": "string", "maxLength": 50 },
+        "preferredLocations": { "type": "string", "maxLength": 200 },
+        "remotePreference": { "type": "string", "maxLength": 50 },
+        "bio": { "type": "string", "maxLength": 1000 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "Business lead record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "source": { "type": "string", "maxLength": 100 },
+        "businessName": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "location": { "type": "string", "maxLength": 200 },
+        "website": { "type": "string", "maxLength": 500 },
+        "email": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "businessName", "category", "location"]
+    },
+    "SavedLead": {
+      "title": "SavedLead",
+      "description": "Lead bookmarked by a user",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "leadId": { "type": "string", "maxLength": 128 },
+        "businessName": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "location": { "type": "string", "maxLength": 200 },
+        "website": { "type": "string", "maxLength": 500 },
+        "email": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "score": { "type": "number" },
+        "scoreReason": { "type": "string", "maxLength": 1000 },
+        "savedAt": { "type": "string" }
+      },
+      "required": ["uid", "leadId"]
+    },
+    "Job": {
+      "title": "Job",
+      "description": "Job posting record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "source": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 200 },
+        "company": { "type": "string", "maxLength": 200 },
+        "location": { "type": "string", "maxLength": 200 },
+        "remote": { "type": "string", "maxLength": 50 },
+        "jobType": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "skills": { "type": "string", "maxLength": 500 },
+        "applicationUrl": { "type": "string", "maxLength": 1000 },
+        "postedAt": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "company", "applicationUrl"]
+    },
+    "SavedJob": {
+      "title": "SavedJob",
+      "description": "Job bookmarked by a user",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "jobId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "company": { "type": "string", "maxLength": 200 },
+        "location": { "type": "string", "maxLength": 200 },
+        "remote": { "type": "string", "maxLength": 50 },
+        "jobType": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "skills": { "type": "string", "maxLength": 500 },
+        "applicationUrl": { "type": "string", "maxLength": 1000 },
+        "postedAt": { "type": "string", "maxLength": 100 },
+        "matchScore": { "type": "number" },
+        "matchReason": { "type": "string", "maxLength": 1000 },
+        "savedAt": { "type": "string" }
+      },
+      "required": ["uid", "jobId"]
+    },
+    "Search": {
+      "title": "Search",
+      "description": "User search history record",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "enum": ["lead", "job"] },
+        "query": { "type": "string", "maxLength": 200 },
+        "filters": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "type", "query"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Private user account record"
+    },
+    "/freelancerProfiles/{userId}": {
+      "schema": { "$ref": "#/entities/FreelancerProfile" },
+      "description": "Freelancer preference profile"
+    },
+    "/leads/{leadId}": {
+      "schema": { "$ref": "#/entities/Lead" },
+      "description": "Public verified leads collection"
+    },
+    "/savedLeads/{savedLeadId}": {
+      "schema": { "$ref": "#/entities/SavedLead" },
+      "description": "Saved leads personal collection"
+    },
+    "/jobs/{jobId}": {
+      "schema": { "$ref": "#/entities/Job" },
+      "description": "Public verified jobs collection"
+    },
+    "/savedJobs/{savedJobId}": {
+      "schema": { "$ref": "#/entities/SavedJob" },
+      "description": "Saved jobs personal collection"
+    },
+    "/searches/{searchId}": {
+      "schema": { "$ref": "#/entities/Search" },
+      "description": "User personal search history"
+    }
+  }
+}

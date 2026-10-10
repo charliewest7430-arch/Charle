@@ -1,0 +1,6 @@
+{
+  "name": "LeadFinder AI",
+  "description": "Free AI-powered platform for freelancers to discover potential business leads and freelance jobs with smart scoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
