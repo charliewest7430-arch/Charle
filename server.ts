@@ -582,6 +582,7 @@ async function startServer() {
       },
       appType: 'spa',
     });
+    app.use(express.static(path.resolve(__dirname, 'public')));
     app.use(vite.middlewares);
   } else {
     // Serve static files in production
