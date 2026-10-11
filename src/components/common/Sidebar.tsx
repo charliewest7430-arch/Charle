@@ -98,6 +98,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
         })}
       </nav>
 
+      {/* Monetag Direct Link */}
+      <div className="pt-3 pb-1">
+        <a
+          href="https://uplcm.com/4/12005298"
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-amber-300 bg-amber-950/40 border border-amber-800/40 hover:bg-amber-900/40 hover:border-amber-600/60 transition-all group shadow-xs"
+        >
+          <div className="flex items-center gap-2.5">
+            <Sparkles className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            <span>Freelancer Perks</span>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded border border-amber-500/30">
+            Deals
+          </span>
+        </a>
+      </div>
+
       {/* Footer Info */}
       <div className="pt-4 border-t border-slate-800/80 mt-auto">
         <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-300 flex items-center gap-2">

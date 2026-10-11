@@ -68,6 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               Data Sources
             </button>
+            <a
+              href="https://uplcm.com/4/12005298"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="hover:text-amber-300 transition-colors flex items-center gap-1 text-amber-400 font-medium"
+            >
+              <span>Perks</span>
+              <span className="text-[9px] bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-bold border border-amber-500/30">
+                Deals
+              </span>
+            </a>
           </nav>
         )}
 
