@@ -69,6 +69,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               Data Sources
             </button>
             <a
+              href="https://elementarywhole.com/bS3.VM0/P/3-p/vTb/maVeJAZvDV0F3VNcTkAF4BOVDKYwxRLwTdc/1vMvDagZ4eNcjcUs"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="hover:text-cyan-300 transition-colors flex items-center gap-1 text-cyan-400 font-medium"
+            >
+              <span>Partner Tools</span>
+              <span className="text-[9px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded font-bold border border-cyan-500/30">
+                Hot
+              </span>
+            </a>
+            <a
               href="https://uplcm.com/4/12005298"
               target="_blank"
               rel="noopener noreferrer sponsored"

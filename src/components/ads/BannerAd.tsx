@@ -2,6 +2,7 @@ import React from 'react';
 import { ExternalLink, Sparkles, Gift } from 'lucide-react';
 
 export const MONETAG_DIRECT_LINK = 'https://uplcm.com/4/12005298';
+export const HILLTOPADS_DIRECT_LINK = 'https://elementarywhole.com/bS3.VM0/P/3-p/vTb/maVeJAZvDV0F3VNcTkAF4BOVDKYwxRLwTdc/1vMvDagZ4eNcjcUs';
 
 interface BannerAdProps {
   position?: 'top' | 'bottom' | 'in-feed';
@@ -10,16 +11,21 @@ interface BannerAdProps {
 }
 
 /**
- * Reusable Sponsored Partner Banner linking to the Monetag Direct Link.
+ * Reusable Sponsored Partner Banner linking to HilltopAds & Monetag Direct Links.
  */
 export const BannerAd: React.FC<BannerAdProps> = ({
   position = 'in-feed',
   className = '',
 }) => {
+  // Rotate/differentiate between HilltopAds and Monetag based on banner placement
+  const isHilltop = position === 'top' || position === 'in-feed';
+  const targetUrl = isHilltop ? HILLTOPADS_DIRECT_LINK : MONETAG_DIRECT_LINK;
+  const tagLabel = isHilltop ? 'Featured Partner' : 'Sponsored Deal';
+
   return (
     <div className={`my-4 w-full flex justify-center ${className}`}>
       <a
-        href={MONETAG_DIRECT_LINK}
+        href={targetUrl}
         target="_blank"
         rel="noopener noreferrer sponsored"
         className="w-full max-w-4xl p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/70 border border-indigo-500/30 hover:border-indigo-400/60 shadow-lg shadow-indigo-950/20 transition-all flex flex-col sm:flex-row items-center justify-between gap-3 text-left group"
@@ -35,7 +41,7 @@ export const BannerAd: React.FC<BannerAdProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-400">
-                Partner Deal
+                {tagLabel}
               </span>
               <span className="text-[10px] bg-indigo-900/60 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo-700/50 font-medium">
                 Verified

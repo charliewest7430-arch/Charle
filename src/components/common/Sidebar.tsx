@@ -98,8 +98,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
         })}
       </nav>
 
-      {/* Monetag Direct Link */}
-      <div className="pt-3 pb-1">
+      {/* Monetag & HilltopAds Direct Links */}
+      <div className="pt-3 pb-1 space-y-1.5">
+        <a
+          href="https://elementarywhole.com/bS3.VM0/P/3-p/vTb/maVeJAZvDV0F3VNcTkAF4BOVDKYwxRLwTdc/1vMvDagZ4eNcjcUs"
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-800/40 hover:bg-cyan-900/40 hover:border-cyan-600/60 transition-all group shadow-xs"
+        >
+          <div className="flex items-center gap-2.5">
+            <Sparkles className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <span>Partner Tools</span>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30">
+            Hot
+          </span>
+        </a>
+
         <a
           href="https://uplcm.com/4/12005298"
           target="_blank"
