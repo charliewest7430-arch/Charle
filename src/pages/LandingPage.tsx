@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { BannerAd } from '../components/ads/BannerAd';
 import { ScoreBadge } from '../components/common/ScoreBadge';
+import { InvoiceFlowBanner } from '../components/promotions/InvoiceFlowBanner';
 
 interface LandingPageProps {
   onNavigate: (page: string) => void;
@@ -122,6 +123,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* InvoiceFlow AI Promotional Banner */}
+      <InvoiceFlowBanner />
 
       {/* Interactive Feature Previews */}
       <section className="py-16 bg-slate-950/60 border-y border-slate-900 px-4 sm:px-6 lg:px-8">

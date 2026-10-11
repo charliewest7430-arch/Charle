@@ -325,8 +325,22 @@ class JobDataProvider {
 }
 
 // ---------------------------------------------------------------------------
-// API Routes
+// Ezoic Ads.txt Manager (Step 1 Setup)
 // ---------------------------------------------------------------------------
+app.get('/ads.txt', (req: Request, res: Response) => {
+  const hostHeader = (req.headers.host || req.hostname || '').toLowerCase();
+  const domain = hostHeader.includes('leadfinderai.online')
+    ? 'leadfinderai.online'
+    : (process.env.APP_DOMAIN || 'leadfinderai.online');
+
+  // If ?local=1 is passed, serve the local static file for reference/inspection
+  if (req.query.local === '1') {
+    return res.sendFile(path.resolve(__dirname, 'public', 'ads.txt'));
+  }
+
+  // 301 redirect to Ezoic Ads.txt Manager as required by Ezoic
+  res.redirect(301, `https://srv.adstxtmanager.com/19390/${domain}`);
+});
 
 // 1. Health check & Data Provider status
 app.get('/api/health', (_req: Request, res: Response) => {

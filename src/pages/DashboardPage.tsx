@@ -17,6 +17,7 @@ import { useAuth } from '../context/AuthContext';
 import { SavedLead, SavedJob } from '../types';
 import { ScoreBadge } from '../components/common/ScoreBadge';
 import { BannerAd } from '../components/ads/BannerAd';
+import { InvoiceFlowDashboardCard } from '../components/promotions/InvoiceFlowDashboardCard';
 
 interface DashboardPageProps {
   onNavigate: (page: string) => void;
@@ -84,6 +85,9 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           </button>
         </div>
       </div>
+
+      {/* InvoiceFlow AI Promotional Card */}
+      <InvoiceFlowDashboardCard />
 
       {/* Metric Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
